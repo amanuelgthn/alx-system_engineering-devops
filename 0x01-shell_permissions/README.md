@@ -1,2 +1,3 @@
 #!/bin/bash
-shell permisions\n
+"A script that prints the permission of a user"\r
+
