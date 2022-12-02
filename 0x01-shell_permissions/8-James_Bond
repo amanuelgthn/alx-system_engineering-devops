@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "$(chmod ug-rwx hello)\n$(Chmod o+rwx hello)"
+printf "$(chmod ug-rwx hello)\n$(chmod o+rwx hello)"
