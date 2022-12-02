@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "chmod ug-rwx hello" "Chmod o+rwx hello"
