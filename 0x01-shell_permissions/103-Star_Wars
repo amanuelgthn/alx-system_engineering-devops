@@ -1,2 +1,2 @@
 #!/bin/bash
-xsg-open "StarWars IV"
+xdg-open StarWars_IV
