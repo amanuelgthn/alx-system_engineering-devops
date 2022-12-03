@@ -1,2 +1,2 @@
 #!/bin/bash
-printf"$(mkdir my_dir)\n$(chmod 751 my_dir)"
+mkdir -m=751 my_dir
