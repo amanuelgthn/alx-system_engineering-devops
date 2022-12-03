@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "$(if ((stat -c "%U"=="guillaume")); then)\n$(chown betty hello))"
+printf "$(if [(stat -c "%U"=="guillaume")]\nthen)\n$(chown betty hello)]\nfi"
