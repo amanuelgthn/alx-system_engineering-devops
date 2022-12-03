@@ -1,2 +1,2 @@
 #!/bin/bash
-printf"$(chown -R vincent *)\n$(chgrp -R staff *)"
+printf "$(chown -R vincent *)$(chgrp -R staff *)"
