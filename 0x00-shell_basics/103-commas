@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "$(ls -aFm)\n"
+printf "$(ls -pam)\n"
