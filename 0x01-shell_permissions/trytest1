@@ -1,0 +1,5 @@
+#!/bin/bash
+if [5==5]
+then
+	print "TRUE"
+fi
