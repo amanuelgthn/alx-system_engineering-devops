@@ -1,0 +1,2 @@
+#!/bin/bash
+printf "$(if ((stat -c "%U"=="guillaume")); then)\n$(chown betty hello))"
