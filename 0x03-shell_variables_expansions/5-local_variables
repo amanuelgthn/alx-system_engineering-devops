@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "$((set)$(printenv)$(alias)"
+printf "$(set)$(printenv)$(alias)"
