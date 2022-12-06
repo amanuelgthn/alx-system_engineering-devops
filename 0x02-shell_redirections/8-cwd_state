@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -la > ls-cwd_content
+printf "$(touch ls-cwd_content)\n$(ls -la > ls-cwd_content)"
