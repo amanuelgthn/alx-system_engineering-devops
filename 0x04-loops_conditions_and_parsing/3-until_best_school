@@ -2,7 +2,7 @@
 # This script is displaying "Best School" 10 times
 
 name="Best School"
-num=10
+num=9
 until [ "$num" -lt 0 ]; do
 	echo "$name"
 	((num--))
