@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+name="Best School"
+num=10
+untill [ "$num" -lt 10 ]; do
+	echo "$name"
+	((num--))
+done
