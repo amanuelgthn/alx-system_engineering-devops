@@ -8,8 +8,7 @@ while [ "$num" -lt 11 ]; do
 	# if statement
 	if [ "$num" -eq 9 ]; then
 		echo "$greet"
-	else
-		echo "$name"
 	fi
+	echo "$name"
 	((num++))
 done
