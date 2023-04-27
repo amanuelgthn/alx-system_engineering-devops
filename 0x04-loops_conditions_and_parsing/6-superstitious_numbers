@@ -11,11 +11,17 @@ while [ "$num" -lt 21 ]; do
 	case $num in 
 		4)
 			echo "$msg"
+			;;
 	case $num in 
 		9)
 			echo "$msg1"
+			;;
 	case $num in 
 		17)
 			echo "$msg2"
+			;;
+		*)
+			;;
+	esac
 	((num++))
 done
