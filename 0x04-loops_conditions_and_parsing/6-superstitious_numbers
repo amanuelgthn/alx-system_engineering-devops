@@ -7,13 +7,15 @@ msg2="bad luck from Italy"
 num=1
 while [ "$num" -lt 21 ]; do
 	echo "$num"
-	# if statement
-	if [ "$num" -eq 4 ]; then
-		echo "$msg"
-	elif [ "$num" -eq 9 ]; then
-		echo "$msg1"
-	elif [ "$num" -eq 17 ]; then
-		echo "$msg2"	
-	fi
+	# case statement
+	case $num in 
+		4)
+			echo "$msg"
+	case $num in 
+		9)
+			echo "$msg1"
+	case $num in 
+		17)
+			echo "$msg2"
 	((num++))
 done
