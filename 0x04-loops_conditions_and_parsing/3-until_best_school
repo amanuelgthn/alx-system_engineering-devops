@@ -3,7 +3,7 @@
 
 name="Best School"
 num=10
-untill [ "$num" -lt 10 ]; do
+until [ "$num" -lt 10 ]; do
 	echo "$name"
 	((num--))
 done
