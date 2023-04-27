@@ -7,7 +7,7 @@ msg1="bad luck from Japan"
 msg2="bad luck from Italy"
 num=1
 while [ "$num" -lt 21 ]; do
-	echo "$i"
+	echo "$num"
 	# if statement
 	if [ "$num" -eq 4 ]; then
 		echo "$msg"
