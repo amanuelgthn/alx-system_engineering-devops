@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+name="Best School"
+msg1="bad luck"
+msg2="good luck"
+num=1
+while [ "$num" -lt 11 ]; do
+	echo "$name"
+
+	# if statement
+	if [ "$num" -eq 4 ]; then
+		echo "$msg1"
+	elif [ "$num" -eq 8 ]; then
+		echo "$msg2"
+	else
+		echo "$name"	
+	fi
+	((num++))
+done
