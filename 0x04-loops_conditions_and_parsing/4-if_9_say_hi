@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script is displaying "Best School" 10 times
+
+name="Best School"
+greet = "Hi"
+num=0
+while [ "$num" -lt 10 ]; do
+	if num == 9; then
+		echo "$greet"
+	else
+		echo "$name"
+	fi
+	((num++))
+done
