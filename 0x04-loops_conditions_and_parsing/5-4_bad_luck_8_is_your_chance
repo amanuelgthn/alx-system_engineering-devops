@@ -6,7 +6,6 @@ msg1="bad luck"
 msg2="good luck"
 num=1
 while [ "$num" -lt 11 ]; do
-	echo "$name"
 
 	# if statement
 	if [ "$num" -eq 4 ]; then
