@@ -2,4 +2,4 @@
 #Bash script that displays a list of current running processes
 
 ps -a -x -u -f | grep <bash>
-shellcheck disable=SC2009
+# shellcheck disable=SC2009
