@@ -2,8 +2,8 @@
 # This script is displaying "Best School" 10 times
 
 name="Best School"
-num = 0
-while [ $num -lt 10 ]; do
+num=0
+while [ "$num" -lt 10 ]; do
 	echo "$name"
 	((num++))
 done
