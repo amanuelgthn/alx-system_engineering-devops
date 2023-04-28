@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #bash script that stops 7-highlander process 
-
-kill -9 "7-highlander"
+echo $$ >> PID
+kill -9 "$PID"
