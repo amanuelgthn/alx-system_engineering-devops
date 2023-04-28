@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 #bash script that stops 4-to_infinity_and_beyond process
 
-kill -p
+PID = echo $$
+kill $PID
