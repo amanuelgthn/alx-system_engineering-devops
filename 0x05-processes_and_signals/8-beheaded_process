@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 #bash script that stops 7-highlander process 
-#!/usr/bin/env bash
-#bash script that stops 4-to_infinity_and_beyond process using pkill
 
-kill -9 "7-highlander"
-
-exit 0
+PID=$(pgrep -f "7-highlander")
+kill -9 "$PID"
