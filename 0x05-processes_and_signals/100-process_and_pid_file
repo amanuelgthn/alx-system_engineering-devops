@@ -11,8 +11,8 @@ echo $$ >> /var/run/myscript.pid
 
 while [ "$num" -eq 1 ]; do
 	trap "echo I hate the kill command" SIGTERM
-	trap "Y U no love me?!" SIGINT
-	trap "$rm /var/run/myscript.pid && exit 0" SIGQUIT | SIGTERM
+	trap "echo Y U no love me?!" SIGINT
+	trap "$rm /var/run/myscript.pid && exit 0" SIGQUIT
 	echo "$name"
 	sleep 2
 done
