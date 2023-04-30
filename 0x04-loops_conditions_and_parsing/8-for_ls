@@ -3,5 +3,5 @@
 
 folder=$(ls)
 for file in  $folder; do
-	echo "$file"
+	echo "$file#*-"
 done
