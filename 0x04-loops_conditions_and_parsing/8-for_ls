@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # This script prints the contents of the current directory
 
-folder=$(ls)
-for file in  $folder; do
+for file in *; do
 	file_name=${file#*-}
 	echo "$file_name"
 done
