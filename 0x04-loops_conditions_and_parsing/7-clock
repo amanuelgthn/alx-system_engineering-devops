@@ -10,5 +10,6 @@ while [ "$hour" -lt 13 ]; do
 	while [ "$minutes" -lt 60 ]; do
 		echo "$minutes"
 		((minutes++))
+	done
 	((hour++))
 done
