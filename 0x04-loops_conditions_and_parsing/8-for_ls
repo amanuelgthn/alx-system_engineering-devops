@@ -3,5 +3,6 @@
 
 folder=$(ls)
 for file in  $folder; do
-	echo "$file#*-"
+	file_name=${file#*-}
+	echo "$filename"
 done
