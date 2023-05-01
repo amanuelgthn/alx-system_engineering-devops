@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cut -d ":" -f1,3,6 /etc/passwd | while IFS=':' read -r username user_id path; do
+    echo "$username:$user_id:$path"
+done

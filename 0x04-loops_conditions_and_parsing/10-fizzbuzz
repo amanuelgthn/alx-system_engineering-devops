@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Script that displays numbers from 1 to 100
-# displays FizzBuzz when the number is a multiple of 3 and 5
+# Bash script that displays the content of the file /etc/passwd
 
 num=1
 while [ "$num" -lt 101 ]; do
