@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#script that displays the content of the file /etc/passwd using the while loop
+cut -d " " -f1,9 apache-access.log | while IFS=' ' read -r IP HTTP_CODE; do
+    echo "$IP $HTTP_CODE"
+done
