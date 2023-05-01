@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Script that gives information about the school file
 
+filename="school"
 # if statement
-if [ -e "$school" ]; then
+if [ -e "$filename" ]; then
 	echo "school file exists"
 else
 	echo "school file does not exist"
