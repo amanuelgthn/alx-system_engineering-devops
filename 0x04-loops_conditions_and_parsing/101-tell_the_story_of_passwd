@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#script that displays the content of the file /etc/passwd using the while loop
+cut -d ":" -f1,4,6,7,3,2,5 /etc/passwd | while IFS=':' read -r name GID path shell user_id passwd GECOS; do
+    echo "The user $name is part of the $GID gang, lives in $path and rides $shell.  $user_id's place is protected by the passcode $passwd, more info about the user here: $GECOS"
+done
