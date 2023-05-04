@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #script that displays listening ports only showing listening sockets
-sudo netstat -nl
+sudo netstat -lp
