@@ -2,9 +2,9 @@
 #Accepts a string as an argument
 #Displays Usage: 5-is_the_host_on_the_network {IP_ADDRESS} if no argument passed
 #Ping the IP 5 times
-if [ $1 ]; then
+if [ "$1" ]; then
 	IP_ADDRESS=$1
-	ping -c5 $IP_ADDRESS
+	ping -c5 "$IP_ADDRESS"
 else
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 fi
