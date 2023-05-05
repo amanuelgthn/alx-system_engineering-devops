@@ -3,7 +3,7 @@
 interfaces=$(ip -o addr show scope global | awk '/inet/ {print $2}')
 
 # Loop through the list of interfaces and print the IP addresses
-for interface in "$interfaces"; do
-    ip_address=$(ip -o addr show $interface | awk '/inet/ {print $4}')
+for interface in $interfaces; do
+	ip_address=$(ip -o addr show "$interface" | awk '/inet/ {print $4}')
     echo "$ip_address"
 done
