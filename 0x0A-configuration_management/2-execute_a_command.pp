@@ -2,6 +2,7 @@
 # must use the exc Puppet resource
 # must use pkill
 
-exec { 'kill-killmenow':
-    command => 'pkill -9 killmenow',
+exec { 'pkill':
+    command => 'pkill -f killmenow',
+    path    =>  '/usr/bin',
 }
