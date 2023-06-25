@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Bash Script that creates an RSA keypair
 
-ssh-keygen -b 4096
-ssh-keygen -p "betty"
+PARAPHRASE="betty"
+ssh-keygen -b 4096 -N "$PARAPHRASE"
