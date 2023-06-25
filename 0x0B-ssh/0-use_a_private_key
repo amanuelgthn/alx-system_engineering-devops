@@ -3,4 +3,4 @@
 # using only one ssh single-character flags
 #with out using -l
 
-ssh -i ~/.ssh/school ubuntu@187642-web-01
+ssh -i ~/.ssh/school ubuntu@54.90.59.65
