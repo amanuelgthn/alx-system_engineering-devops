@@ -3,7 +3,8 @@
 # SSH Client configuration configured to refuse to authenticate a password
 
 Host 187642-web-01
-    Hostname ubuntu
+    Hostname 54.90.59.65
+    User ubuntu
     IdentifyFile ~/.ssh/school
     PassWordAuthentication no
     
