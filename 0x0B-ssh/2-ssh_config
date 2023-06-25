@@ -2,8 +2,8 @@
 # SSH Client configuration configured using the private key ~/.ssh/school
 # SSH Client configuration configured to refuse to authenticate a password
 
-Host my-server
-    Hostname 187642-web-01
+Host 187642-web-01
+    Hostname ubuntu
     IdentifyFile ~/.ssh/school
     PassWordAuthentication no
     
