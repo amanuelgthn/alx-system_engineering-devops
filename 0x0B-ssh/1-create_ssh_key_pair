@@ -2,4 +2,5 @@
 # Bash Script that creates an RSA keypair
 
 PARAPHRASE="betty"
-ssh-keygen -b 4096 -N "$PARAPHRASE"
+FILENAME="school"
+ssh-keygen -b 4096 -N "$PARAPHRASE" -f "$FILENAME"
