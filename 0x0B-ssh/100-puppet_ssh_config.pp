@@ -1,5 +1,5 @@
 #configuration using a puppet file
-exec { 'configure-ssh-client':
-  command => 'echo "Host *\n  IdentityFile ~/.ssh/school\n  PassWordAuthentication no" >> ~/.ssh/config',
-  path => '/usr/bin:/bin',
-}
+exec { 'ssh_config':
+  path => '/bin',
+  command => 'echo "IdentityFile ~/.ssh/school\n  PassWordAuthentication no" >> ~/.ssh/config',
+  }
