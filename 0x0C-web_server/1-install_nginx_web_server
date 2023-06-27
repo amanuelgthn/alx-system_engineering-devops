@@ -7,4 +7,4 @@
 sudo apt-get -y update
 sudo apt-get install -y nginx
 echo "Hello World!"
-sudo ufw restart nginx 80
+sudo service restart nginx 80
