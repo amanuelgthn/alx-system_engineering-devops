@@ -4,7 +4,8 @@
 #when querying NGINX at its root ? with a GET request must show the string Hello World
 #without using systemctl for restarting nginx
 
-apt-get -y update
-apt-get install -y nginx
-echo "Hello World!"
-service nginx restart
+sudo apt-get -y update
+sudo apt-get install -y nginx
+sudo mkdir -p /var/www/html
+sudo echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo service nginx restart
