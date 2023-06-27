@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 
 # Check if the correct number of parameters were passed
 if [ $# -lt 4 ]; then
@@ -13,7 +13,7 @@ username=$3
 ssh_key_path=$4
 
 # Disable strict host key checking
-ssh -o StrictHostKeyChecking=no $username@$ip_address
+scp -o StrictHostKeyChecking=no $username@$ip_address
 
 # Transfer the file
 scp -i $ssh_key_path $file_path $username@$ip_address:~/
