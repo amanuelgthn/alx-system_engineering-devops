@@ -4,7 +4,7 @@
 #when querying NGINX at its root/ with a GET request must show the string Hello World
 #without using systemctl for restarting nginx
 
-DEST ="/etc/nginx/sites-available/default"
+DEST="/etc/nginx/sites-available/default"
 ADD="\\\tlocation \/redirect_me {\n\t\treturn 301 https://youtube.com;\n\t}\n"
 
 sudo apt-get -y update
