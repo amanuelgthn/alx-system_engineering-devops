@@ -5,11 +5,7 @@
 # Without using systemctl for restarting nginx
 
 DEST="/etc/nginx/sites-available/default"
-ADD="\
-location /redirect_me {
-    return 301 https://youtube.com;
-}\n"
-
+ADD="/listen 80 default_server;/rewrite ^redirect_me https://youtube.com;"
 sudo apt-get -y update
 sudo apt-get install -y nginx
 sudo ufw allow 80
