@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
-#install Nginx on web-01
-#NGINX should be listening on port 80
-#when querying NGINX at its root/ with a GET request must show the string Hello World
-#without using systemctl for restarting nginx
+# Install Nginx on web-01
+# NGINX should be listening on port 80
+# When querying NGINX at its root "/" with a GET request must show the string "Hello World"
+# Without using systemctl for restarting nginx
 
 DEST="/etc/nginx/sites-available/default"
-ADD="\\\tlocation \/redirect_me {\n\t\treturn 301 https://youtube.com;\n\t}\n"
+ADD="\
+location /redirect_me {
+    return 301 https://youtube.com;
+}\n"
 
 sudo apt-get -y update
 sudo apt-get install -y nginx
 sudo ufw allow 80
 sudo mkdir -p /var/www/html
 sudo echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo service nginx
+sudo service nginx start
+
+# Use sed to insert the new location block into the default nginx configuration file
 sed -i "$ADD" "$DEST"
+
+# Restart nginx without using systemctl
 sudo service nginx restart
