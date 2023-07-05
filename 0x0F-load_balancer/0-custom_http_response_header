@@ -6,8 +6,8 @@ ADD="\\\tlocation \/redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?
 E404="\\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
 HEADER="\\\n\tadd_header X-Served-By \$hostname;\n"
 
-sudo apt-get -y update
-sudo apt-get install -y nginx
+apt-get -y update
+apt-get install -y nginx
 
 echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 sed -i "30i $ADD" $WHERE
