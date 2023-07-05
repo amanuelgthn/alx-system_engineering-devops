@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #configure Nginx so that its HTTP response contains a custom header (on web-01 and web-02), the name of the custom HTTP Header must be X-served-By
 
+sudo chmod 777 /etc/nginx/sites-available/
+
 WHERE="/etc/nginx/sites-available/default"
 ADD="\\\tlocation \/redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
 E404="\\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"

@@ -1,0 +1,26 @@
+Introduction to HAProxy and Load Balancing
+-HAProxy - High Availability Proxy
+        -popular open source software TCP/HTTP Load Balancer
+        -improve performance and reliability of a server environment by distributing the workload
+
+HAProxy Terminology
+ACL(Acess Control List) - Acess Control List
+    - used to test some condition and perform an action(select a server, or block a request) based
+      on a variety of factors like pattern-matching and the number of connections to a backend
+      eg acl url_blog path_beg /url_blog
+            *This ACL is matched if path of a user's request begins with /blog
+backend
+    - set of servers that receives forwarded requests. 
+    - defined in the backend section of the the HAProxy configuration
+    --- Basically backend can be defined by 
+            + which load balance to used
+            + a list of servers and ports
+    Example:
+    backend web-backend
+        server web1 web1.yourdomain.yourdomain.com:80 check
+        server web2 web2.yourdomain.com:80 check
+    backend blog-backend
+        balance roundrobin
+        mode http
+        server
+    
