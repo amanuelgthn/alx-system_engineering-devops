@@ -4,17 +4,19 @@
 # When querying NGINX at its root "/" with a GET request must show the string "Hello World"
 # Without using systemctl for restarting nginx
 
-DEST="/etc/nginx/sites-available/default"
-ADD="/listen 80 default_server;/rewrite ^redirect_me https://youtube.com;"
-sudo apt-get -y update
-sudo apt-get install -y nginx
-sudo ufw allow 80
-sudo mkdir -p /var/www/html
-sudo echo "Hello World!" | sudo tee /var/www/html/index.html
-sudo service nginx start
+sudo chmod 777 /etc/nginx/sites-available/
 
-# Use sed to insert the new location block into the default nginx configuration file
-sed -i "$ADD" "$DEST"
+WHERE="/etc/nginx/sites-available/default"
+ADD="\\\tlocation \/redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
+E404="\\\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
 
-# Restart nginx without using systemctl
-sudo service nginx restart
+apt-get -y update
+apt-get install -y nginx
+
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+sed -i "30i $ADD" $WHERE
+echo -e "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/custom_404.html
+sed -i "48i $E404" $WHERE
+
+# Restart Nginx
+service nginx restart
