@@ -1,0 +1,17 @@
+#!/uusr/bin/env bash
+#Bash script that configures HAproxy so that it send traffic to web-01 and web-02,distributes requests using a roundrobin algorithm and the HAproxy server can be managed via an init script
+
+sudo apt-get update
+sudo apt-get install --no-install-recommends software-properties-common -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.8 -y
+sudo apt-get update && apt-get upgrade -y
+sudo apt-get install haproxy=2.8.\* -y
+echo "frontend web-front
+        bind *:80
+        default_backend web-backend
+    backend web-backend
+        balance roundrobin
+        server web1 54.90.59.65:80 check
+        server web2 18.235.248.54:80 check
+" | sudo tee -a /etc/haproxy/haproxy.cfg
+sudo service haproxy start
