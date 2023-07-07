@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #Bash script that configures HAproxy so that it send traffic to web-01 and web-02,distributes requests using a roundrobin algorithm and the HAproxy server can be managed via an init script
 
-balancer="
+balancer="\
 frontend haproxy_balancer
     bind *:80
     mode http
@@ -11,8 +11,6 @@ backend webservers
     balance roundrobin
     server 187642-web-01 54.90.59.65:80 check
     server 187642-web-02 18.235.248.54:80 check
-    timeout connect 5000
-    timeout client 5000
 "
 # Update packages
 apt-get -y update
@@ -20,11 +18,12 @@ apt-get -y upgrade
 
 # Add HAProxy PPA
 apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.8
+add-apt-repository -y ppa:vbernat/haproxy-2.5
 apt-get -y update
 
 # Install HAProxy
 apt-get -y install haproxy
 cp -a /etc/haproxy/haproxy.cfg{,.orig}
 echo "$balancer" >> /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy
+service haproxy restart
+
