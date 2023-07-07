@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 # debugging Nginx web server and configures a server to listening on port 80 of all the servers's active IPV4 IPs
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+pkill -f "nginx"
 service nginx restart
