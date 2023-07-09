@@ -2,7 +2,7 @@ global
         log /dev/log    local0
         log /dev/log    local1 notice
         chroot /var/lib/haproxy
-        stats socket /run/haproxy/admin.sock mode 660 level admin
+        stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
         stats timeout 30s
         user haproxy
         group haproxy
@@ -32,22 +32,17 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend haproxy_balancer
-    bind *:80
-    mode http
-    default_backend webserver
+frontend frontend_https
+    bind *:443 ssl crt /etc/haproxy/certs/www.amanuelbikoradev.tech.pem
+    reqadd X-Forwarded-Proto:\ https
+    reqadd X-Holberton-School: 1
+    default_backend load_balancer
 
-backend webservers
+backend load_balancer
     balance roundrobin
-    server 187642-web-01 54.90.59.65:80 check
-    server 187642-web-02 18.235.248.54:80 check
+    server 187642-lb-01 54.209.206.61:443 check
 
      location / {
         return 200 Holberton School;
     }
 
-frontend frontend_https
-    bind *:443 ssl crt /etc/haproxy/certs/amanuelbikoradev.tech.pem
-    reqadd X-Forwarded-Proto:\ https
-    reqadd X-Holberton-School: 1
-    default_backend webserver
