@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#combine fullchain.pem and privkey.pem and save it to /etc/haproxy/certs
+#Backup the default configaration file and copy to a new location
+
+# Update packages
+apt-get -y update
+apt-get -y upgrade
+
+# Add HAProxy PPA
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.5
+apt-get -y update
+
+# Install HAProxy
+apt-get -y install haproxy
+cp -a /etc/haproxy/haproxy.cfg{,.orig}
+
+#install certbot for ubuntu 20.04
+sudo apt install certbot python3-certbot-nginx
+
+#Request certificate for domain www.amanuelbikoradev.tech
+
+sudo certbot --nginx -d www.amanuelbikoradev.tech
+
+sudo mkdir -p /etc/haproxy/certs
+sudo -E bash -c 'cat /etc/letsencrypt/live/www.amanuelbikoradev.tech/fullchain.pem /etc/letsencrypt/live/www.amanuelbikoradev.tech/privkey.pem > /etc/haproxy/certs/www.amanuelbikoradev.tech.pem'
+sudo chmod -R go-rwx /etc/haproxy/certs
+cp /etc/haproxy/haproxy.cfg{,_backup}
+
+#add https load balancing to listen on port 443 on mode TCP
+
+balance_https="\
+frontend frontend_https
+    bind *:443 ssl crt /etc/haproxy/certs/www.amanuelbikoradev.tech.pem
+    reqadd X-Forwarded-Proto:\ https
+    reqadd X-Holberton-School: 1
+    default_backend load_balancer
+
+backend load_balancer
+    balance roundrobin
+    server 187642-lb-01 54.209.206.61:443 check
+
+     location / {
+        return 200 Holberton School;
+    }
+"
+echo "$balance_https" >> /etc/haproxy/haproxy.cfg
+
+#restart haproxy
+
+systemctl restart haproxy
