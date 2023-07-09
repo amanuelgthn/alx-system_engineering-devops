@@ -31,12 +31,12 @@ apt-get -y upgrade
 
 # install certbot/ SSL certificate installation
 sudo apt-get install software-properties-common
-sudo apt-get-repositry ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install -y certbot
+#sudo apt-get-repositry ppa:certbot/certbot use this for ubuntu 18.04 only
+# for ubuntu 20.04 use the following
+sudo apt install certbot python3-certbot-nginx
 
-#get the certificate
-sudo certbot certonly --standalone -d amanuelbikoradev.tech -d www.amanuelbikoradev.tech
+#get the certificate using the nginx plugin to take care of reconfiguration of Nginx and reloading the config when necessary
+sudo certbot --nginx -d amanuelbikoradev.tech -d www.amanuelbikoradev.tech
 
 # combine the fullchain.pem and privekey.pem which are created when the above get certificate, certbot certonly command is run, the certonly command uses the openssl command line to create these files
 # save the keys to /etc/haproxy/certs folder
@@ -62,7 +62,7 @@ apt-get -y update
 apt-get -y install haproxy
 cp -a /etc/haproxy/haproxy.cfg{,.orig}
 echo "$balancer" >> /etc/haproxy/haproxy.cfg
-echo :"$balance_https" >> /etc/haproxy/haproxy.cfg
+echo "$balance_https" >> /etc/haproxy/haproxy.cfg
 
 systemctl restart haproxy
 
