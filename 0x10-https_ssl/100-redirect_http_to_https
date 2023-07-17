@@ -45,4 +45,3 @@ backend load_balancer
      location / {
         return 200 Holberton School;
     }
-
