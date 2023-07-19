@@ -1,0 +1,7 @@
+#!/bin/bash
+#Script that the whoami command on the argument passed
+if [-n $1]; then
+  $(whoami $1)
+else
+  $(whoami)
+fi
