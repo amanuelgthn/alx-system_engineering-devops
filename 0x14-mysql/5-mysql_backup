@@ -2,4 +2,3 @@
 #script that generates a MYSQL dump and creates a compressed archive out of it
 sudo mysqldump -u root > backup.sql
 tar cfz backup.tar.gz backup
-rm backup.sql
