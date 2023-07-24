@@ -8,8 +8,9 @@ about his/her TODO list progress
 if __name__ == '__main__':
     import requests
     from sys import argv
-    import sys
 
+    if len(argv) < 2:
+        exit()
     id = argv[1]
     url = 'https://jsonplaceholder.typicode.com/users'
     refined_url_name = '{}/{}'.format(url, id)
@@ -27,7 +28,7 @@ if __name__ == '__main__':
             i += 1
             tasks.append(obj["title"])
         j += 1
-    sys.stdout.write("Employee {} is done with tasks({}/{}):\n".
-                     format(employee_name, i, j))
+    print("Employee {} is done with tasks({}/{}):".
+          format(employee_name, i, j))
     for task in tasks:
-        sys.stdout.write("\t{}\n".format(task))
+        print("\t{}".format(task))
