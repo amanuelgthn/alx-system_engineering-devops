@@ -1,0 +1,9 @@
+HTTPS - secure version of HTTP
+        - all communications between browser and the websites are encrypted.
+        - often used to protect highly confidential online transactions
+HTTPS pages - use one of two secure protocols to encrypt communications(SSL[secure sockets layer] or TLS[Transport Layer Security])
++ Both TLS and SSL use an assymetric Public key Infrastructure(PKI) system
+Assymetric System - uses two keys to encrypt communications *private key & *public key
+*** anything encrypted with the public key can only be decrypted by the private key and vice-versa
+private key - only accessible by owner and remains securely ensconce on the web server.
+public key - anybody that wants to decrypt information encrypted by the private key
