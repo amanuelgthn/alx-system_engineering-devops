@@ -23,14 +23,12 @@ if __name__ == '__main__':
     user_name = json_response_name["username"]
     list_obj = []
     for obj in json_response_todo:
-            dict_obj = {}
-            dict_obj["task"] =  obj["title"]
-            dict_obj["completed"] = obj["completed"]
-            dict_obj["username"] = user_name
-            list_obj.append(dict_obj)
+        dict_obj = {}
+        dict_obj["task"] = obj["title"]
+        dict_obj["completed"] = obj["completed"]
+        dict_obj["username"] = user_name
+        list_obj.append(dict_obj)
     file_dict = {}
     file_dict[id] = list_obj
     with open(file_name, "w+", encoding="utf-8") as file:
         json.dump(file_dict, file)
-    
- 
