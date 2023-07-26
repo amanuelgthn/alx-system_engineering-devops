@@ -31,6 +31,5 @@ if __name__ == '__main__':
             dict_user["completed"] = id["completed"]
             list_user.append(dict_user)
         json_dict[i] = list_user
-    print(json_dict)
     with open(file_name, "w+", encoding="utf-8") as file:
         json.dump(json_dict, file)
