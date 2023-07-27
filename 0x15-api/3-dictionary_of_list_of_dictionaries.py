@@ -27,7 +27,7 @@ if __name__ == '__main__':
         for id in json_response_id:
             dict_user = {}
             dict_user["username"] = dict_list[i]
-            dict_user["tasks"] = id["title"]
+            dict_user["task"] = id["title"]
             dict_user["completed"] = id["completed"]
             list_user.append(dict_user)
         json_dict[i] = list_user
