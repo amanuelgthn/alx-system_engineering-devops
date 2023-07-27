@@ -25,8 +25,8 @@ if __name__ == '__main__':
         writer = csv.writer(csv_file)
         for obj in json_response_todo:
             row = []
-            row.append('"{}"'.format(obj["userId"]))
-            row.append('"{}"'.format(user_name))
-            row.append('"{}"'.format(obj["completed"]))
-            row.append('"{}"'.format(obj["title"]))
+            row.append('{}'.format(obj["userId"]))
+            row.append('{}'.format(user_name))
+            row.append('{}'.format(obj["completed"]))
+            row.append('{}'.format(obj["title"]))
             writer.writerow(row)
