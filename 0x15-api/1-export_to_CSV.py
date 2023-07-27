@@ -21,8 +21,6 @@ if __name__ == '__main__':
     json_response_name = response.json()
     json_response_todo = response_todos.json()
     user_name = json_response_name["username"]
-    for obj in json_response_todo:
-        print(obj["title"])
     with open(file_name, 'w', newline='') as csv_file:
         writer = csv.writer(csv_file)
         for obj in json_response_todo:
