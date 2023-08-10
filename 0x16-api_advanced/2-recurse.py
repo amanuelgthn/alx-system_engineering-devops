@@ -15,10 +15,11 @@ def recurse(subreddit, hot_list=[], i=0):
     response = requests.get(url=url,
                             headers=headers,
                             allow_redirects=False).json()
+    string = ""
     try:
         data = response['data']['children'][i]
-        hot_list.append(data['data']['title'])
-    except Exception:
-        print(None)
-        return
-    return recurse(subreddit, hot_list, i)
+        string = data['data']['title']
+        hot_list.append(string)
+    except IndexError:
+        return hot_list
+    return recurse(subreddit, hot_list, i+1)
