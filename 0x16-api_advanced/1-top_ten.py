@@ -11,10 +11,13 @@ from sys import argv
 
 def top_ten(subreddit):
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    response = requests.get(url).json()
-    data = response['data']
-    if data['children']:
-        for title in data['children'][:10]:
-            print(title)['data']['title']
-        else:
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    response = requests.get(url=url,
+                            headers=headers,
+                            allow_redirects=False).json()
+    for i in range(9):
+        try:
+            data = response['data']['children'][i]
+            print(data['data']['title'])
+        except Exception:
             print(None)
