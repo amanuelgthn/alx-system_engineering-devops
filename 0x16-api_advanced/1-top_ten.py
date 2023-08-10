@@ -15,7 +15,7 @@ def top_ten(subreddit):
     response = requests.get(url=url,
                             headers=headers,
                             allow_redirects=False).json()
-    for i in range(9):
+    for i in range(10):
         try:
             data = response['data']['children'][i]
             print(data['data']['title'])
