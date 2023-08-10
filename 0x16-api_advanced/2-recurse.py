@@ -9,17 +9,20 @@ import json
 import requests
 
 
-def recurse(subreddit, hot_list=[], i=0):
+ready = requests.Session()
+ready.headers.update({'User-Agent': 'Script'})
+ready.allow_redirects = False
+
+
+def recurse(subreddit, hot_list=[]):
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    response = requests.get(url=url,
-                            headers=headers,
-                            allow_redirects=False).json()
-    string = ""
+    response = ready.get(url).json()
     try:
-        data = response['data']['children'][i]
-        string = data['data']['title']
-        hot_list.append(string)
-    except IndexError:
+        for item in response['data']['children']:
+            hot_list.append(item['data']['title'])
+        if response['data']['after']:
+            ready.params = {'after': response['data']['after']}
+            return recurse(subreddit, hot_list)
         return hot_list
-    return recurse(subreddit, hot_list, i+1)
+    except Exception:
+        return None
