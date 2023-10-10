@@ -10,9 +10,6 @@ from sys import argv
 
 
 def number_of_subscribers(subreddit):
-    """
-    function that queries the reddit API and returns the number of subscribers
-    """
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
     response = requests.get(url)
     json_response_name = response.json()
