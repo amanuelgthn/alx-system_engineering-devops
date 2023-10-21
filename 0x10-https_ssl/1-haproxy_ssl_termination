@@ -32,17 +32,16 @@ defaults
         errorfile 502 /etc/haproxy/errors/502.http
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
-frontend frontend_https
-    bind *:443 ssl crt /etc/haproxy/certs/www.amanuelbikoradev.tech.pem
-    reqadd X-Forwarded-Proto:\ https
-    reqadd X-Holberton-School: 1
-    default_backend load_balancer
 
-backend load_balancer
+frontend frontend_http
+    bind *:80
+    bind *:443 ssl crt /etc/letsencrypt/live/www.amanuelbikoradev.tech-0001/fullchain.pem
+    http-request add-header X-Forwarded-Proto https
+    http-request add-header X-Holberton-School 1
+    stats uri /haproxy?stat
+    default_backend webservers
+
+backend webservers
     balance roundrobin
-    server 187642-lb-01 54.209.206.61:443 check
-
-     location / {
-        return 200 Holberton School;
-    }
-
+    server 187642-web-01 34.227.94.152:80 check
+    server 187642-web-02 52.86.83.165:80 check
