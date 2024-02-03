@@ -20,7 +20,6 @@ if __name__ == '__main__':
     response_todos = requests.get(refined_url_todo)
     json_response_name = response.json()
     json_response_todo = response_todos.json()
-    print(json_response_todo)
     employee_name = json_response_name["name"]
     completed = 0
     total = 0
