@@ -29,7 +29,7 @@ if __name__ == '__main__':
             i += 1
             tasks.append(obj["title"])
         j += 1
-    print("\t Employee {} is done with tasks({}/{}\n):".
+    print("Employee {} is done with tasks({}/{}):".
           format(employee_name, i, j))
     for task in tasks:
-        print("\t{}".format(task))
+        print("\t {}".format(task))
